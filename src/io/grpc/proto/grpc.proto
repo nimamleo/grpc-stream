@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package grpc;
+
+
+service UserService{
+  rpc createUser (UserRequest) returns (UserResponse);
+  rpc FindUserById (userId) returns (UserResponse);
+  rpc testStream (stream HelloRequest) returns (stream  HelloResponse);
+}
+
+message userId{
+  string id = 1;
+}
+
+message UserResponse{
+  string id = 1;
+  string name =2;
+  string email = 3;
+  string pass = 4;
+}
+
+message Users{
+  repeated UserResponse users =1;
+}
+
+message Empty {};
+
+message Boolean{
+  bool success=1;
+}
+
+message UserRequest{
+  string name = 1;
+  string email = 2;
+  string pass = 3;
+}
+
+message UpdateUserDto{
+  string id = 1;
+  string name = 2;
+  string email = 3;
+  string pass = 4;
+}
+
+
+message HelloRequest {
+  string greeting = 1;
+}
+
+message HelloResponse {
+  string reply = 1;
+}
